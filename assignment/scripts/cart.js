@@ -63,7 +63,18 @@ console.log(`this is what's left in your basket: ${basket}`);
 
 console.log(`Is the basket full? ${isFull(basket)}`);
 
+function removeItem(item){
+    spot = basket.indexOf(item);
+    console.log(spot);
+    if(spot > 0){
+        basket.splice(spot,1);
+        return item;
+    }
+    else {return null};
+}
 
+console.log(removeItem("soda"));
+console.log(basket);
 
 
 
