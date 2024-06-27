@@ -8,8 +8,13 @@ const maxItems = 5;
 
 console.log(basket.length);
 function addItem(item){
-    basket.push(item);
-    return true;
+    if(isFull(basket)){
+        console.log('Your basket is full.');
+        return false;
+    }
+    else {
+        basket.push(item);
+        return true};
 }  //end addItem function
 
 console.log(`Adding gum ${addItem("gum")}`);  //testing addItem function
@@ -21,6 +26,8 @@ console.log(`Adding pop ${addItem("pop")}`);
 console.log(`Adding chips ${addItem("chips")}`);
  console.log(basket);
 console.log(`Adding ice cream ${addItem("ice cream")}`);
+ console.log(basket);
+ console.log(`Adding 6th item ${addItem("oreos")}`);
  console.log(basket);
 
 function listItems(cart){
@@ -36,7 +43,7 @@ function empty(array){
     console.log(array);
     console.log(array.length);
     let cart1 = array
- while (cart1.length > 0){
+ while (cart1.length > 2){
         cart1.pop();
         console.log(`inside array there are ${cart1.length} items`);
        }
@@ -44,8 +51,17 @@ function empty(array){
     return cart1;
 }
 
+function isFull(items){
+    if (items.length < maxItems){
+        return false;
+    }
+    else {return true};
+}
 
-console.log(`this is what's left in your basket: ${empty(basket)}`);
+//basket = empty(basket);
+console.log(`this is what's left in your basket: ${basket}`);
+
+console.log(`Is the basket full? ${isFull(basket)}`);
 
 
 
