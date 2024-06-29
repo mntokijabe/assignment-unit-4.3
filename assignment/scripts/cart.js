@@ -5,20 +5,8 @@ console.log('***** Cart Functions *****');
 let basket = [];
 const maxItems = 5;
 
-
-console.log(basket.length);
-function addItem(item){
-    if(isFull(basket)){
-        console.log('Your basket is full.');
-        return false;
-    }
-    else {
-        basket.push(item);
-        return true};
-}  //end addItem function
-
 console.log(`Adding gum ${addItem("gum")}`);  //testing addItem function
- console.log(basket);
+ console.log(basket);   //verifying what is in the basket now
 console.log(`Adding candy ${addItem("candy")}`);
  console.log(basket);
 console.log(`Adding pop ${addItem("pop")}`);
@@ -27,54 +15,77 @@ console.log(`Adding chips ${addItem("chips")}`);
  console.log(basket);
 console.log(`Adding ice cream ${addItem("ice cream")}`);
  console.log(basket);
- console.log(`Adding 6th item ${addItem("oreos")}`);
+console.log(`Adding 6th item - oreos ${addItem("oreos")}`);
  console.log(basket);
+
+console.log(basket.length);   //verifying how many items in basket
+
+listItems(basket); // calling function to display each item in the basket
+
+
+console.log(`Is the basket full? ${isFull(basket)}`);
+
+let cutIt = prompt('What item would you like to remove?');
+console.log(`You removed `,removeItem(cutIt));  //testing to see if item is removed
+console.log(`This is what's left in your basket: ${basket} `);
+
+console.log(basket);  //verifying that the item has been removed, or isn't there
+
+
+function addItem(item){
+    if(isFull(basket)){  //part of stretch exercise
+        console.log('Your basket is full.');
+        return false;
+    }
+    else {
+        basket.push(item);
+        return true};
+}  //end addItem function
+
 
 function listItems(cart){
     console.log('In your basket you currently have:')
     for (let entry of cart){
-        console.log(entry);
+        console.log(entry);  //prints off the itemized array value
     }
 }
-listItems(basket);
-
-
-function empty(array){
-    console.log(array);
-    console.log(array.length);
-    let cart1 = array
- while (cart1.length > 2){
-        cart1.pop();
-        console.log(`inside array there are ${cart1.length} items`);
+function empty(){
+    // since basket is global, do not need to use parameter
+ while (basket.length > 0){
+        basket.pop();
+        console.log(`inside array there are ${basket.length} items`);
        }
-    console.log(`the array is now ${array}`);
-    return cart1;
+    console.log(`the array is now ${basket}`);
+    return basket;
 }
 
-function isFull(items){
-    if (items.length < maxItems){
+function isFull(){
+    if (basket.length < maxItems){
         return false;
     }
     else {return true};
 }
 
-//basket = empty(basket);
-console.log(`this is what's left in your basket: ${basket}`);
-
-console.log(`Is the basket full? ${isFull(basket)}`);
-
 function removeItem(item){
     spot = basket.indexOf(item);
-    console.log(spot);
-    if(spot > 0){
+    // console.log(spot);
+    if(spot >= 0){
         basket.splice(spot,1);
         return item;
     }
-    else {return null};
+    else {console.log(`Sorry, ${item} wasn't in the basket`);
+        return null
+    };
 }
 
-console.log(removeItem("soda"));
-console.log(basket);
+
+
+
+
+
+
+
+
 
 
 
