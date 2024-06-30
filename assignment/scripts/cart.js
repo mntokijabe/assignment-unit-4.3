@@ -23,13 +23,16 @@ console.log(basket.length);   //verifying how many items in basket
 listItems(basket); // calling function to display each item in the basket
 
 
+
 console.log(`Is the basket full? ${isFull(basket)}`);
 
 let cutIt = prompt('What item would you like to remove?');
 console.log(`You removed `,removeItem(cutIt));  //testing to see if item is removed
 console.log(`This is what's left in your basket: ${basket} `);
-
 console.log(basket);  //verifying that the item has been removed, or isn't there
+
+empty(basket);  //empties all items from the basket
+console.log(basket);
 
 
 function addItem(item){
@@ -77,10 +80,6 @@ function removeItem(item){
         return null
     };
 }
-
-
-
-
 
 
 
